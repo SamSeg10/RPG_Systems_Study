@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ItemDefinition.h"
-#include "InventoryItemFragment.h"
+#include "Fragments/InventoryItemFragment.h"
 
 const UInventoryItemFragment* UItemDefinition::FindFragmentByClass(const TSubclassOf<UItemDefinition> ItemDefinition, const TSubclassOf<UInventoryItemFragment> FragmentClass)
 {

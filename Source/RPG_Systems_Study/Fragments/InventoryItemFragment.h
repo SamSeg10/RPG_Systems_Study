@@ -13,5 +13,5 @@ UCLASS(Blueprintable, BlueprintType, Abstract, DefaultToInstanced, EditInlineNew
 class RPG_SYSTEMS_STUDY_API UInventoryItemFragment : public UObject
 {
 	GENERATED_BODY()
-	
+
 };
