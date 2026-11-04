@@ -13,6 +13,7 @@ bool UInventoryFragment_Usable::Use(AActor* ItemOwner)
 	{
 		if (Action && Action->Execute(ItemOwner))
 		{
+			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, FString(*Action->GetName()));
 			bAnySucceeded = true;
 		}
 	}
