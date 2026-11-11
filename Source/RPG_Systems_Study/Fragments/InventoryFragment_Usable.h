@@ -17,7 +17,7 @@ class RPG_SYSTEMS_STUDY_API UInventoryFragment_Usable : public UInventoryItemFra
 	
 public:
 	UFUNCTION(BlueprintCallable)
-	bool Use(AActor* ItemOwner);
+	bool Use(AActor* ItemOwner, UItemInstance* ItemInstance);
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Options")
 	bool bConsumeOnUse = true;

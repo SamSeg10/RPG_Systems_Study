@@ -6,6 +6,7 @@
 #include "UObject/Object.h"
 #include "ItemAction.generated.h"
 
+class UItemInstance;
 /**
  * 
  */
@@ -16,5 +17,5 @@ class RPG_SYSTEMS_STUDY_API UItemAction : public UObject
 	
 public: 
 	UFUNCTION(BlueprintImplementableEvent) //This means that this function can only be implemented in blueprints. To be able to implement it in c++, use BlueprintNativeEvent
-	bool Execute(AActor* ItemOwner);
+	bool Execute(AActor* ItemOwner, UItemInstance* ItemInstance);
 };
