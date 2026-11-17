@@ -16,7 +16,7 @@ void UItemInstance::SetStatValue(FGameplayTag StatTag, float StatValue)
 	StatsMap.Add(StatTag, StatValue);
 }
 
-void UItemInstance::Initialize(TSubclassOf<UItemDefinition> ItemDef, const TMap<FGameplayTag, float>& InitialStats)
+void UItemInstance::Initialize(TSubclassOf<UItemDefinition> ItemDef)
 {
 	if (!ItemDef) return;
 	
@@ -28,11 +28,6 @@ void UItemInstance::Initialize(TSubclassOf<UItemDefinition> ItemDef, const TMap<
 	{
 		Fragment->OnInstanceCreated(this);
 	}
-	
-	if (!InitialStats.IsEmpty())
-	{
-		StatsMap = InitialStats;
-	}
 }
 
 const UInventoryItemFragment* UItemInstance::FindFragmentByClass(
@@ -43,4 +38,12 @@ const UInventoryItemFragment* UItemInstance::FindFragmentByClass(
 	UItemDefinition* ItemCDO = ItemDefinition.GetDefaultObject();
 	
 	return ItemCDO->FindFragmentByClass(ItemDefinition, FragmentClass);
+}
+
+// We need to change the owner of the instance because if not, the garbage collector won't get rid of the destroyed pickup game object since it will still be referenced
+void UItemInstance::ChangeOwner(UObject* NewOwner)
+{
+	if (!NewOwner) return;
+	
+	this->Rename(nullptr, NewOwner);
 }
