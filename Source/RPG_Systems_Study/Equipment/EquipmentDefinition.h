@@ -20,4 +20,7 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Equipment Actor")
 	FName AttachSocketName;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Equipment Effects")
+	TArray<TSubclassOf<UGameplayEffect>> EffectsToApply;
 };

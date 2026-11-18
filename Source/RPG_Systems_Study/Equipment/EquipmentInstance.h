@@ -3,9 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ActiveGameplayEffectHandle.h"
 #include "UObject/Object.h"
 #include "EquipmentInstance.generated.h"
 
+class UGameplayEffect;
 class UItemInstance;
 class UEquipmentDefinition;
 /**
@@ -26,11 +28,14 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<AActor> SpawnedEquipmentActor;
 	
-	UFUNCTION(BlueprintCallable)
-	void Initialize(UItemInstance* ItemInstance, ACharacter* Character);
+	UPROPERTY(BLueprintReadOnly)
+	TArray<FActiveGameplayEffectHandle> AppliedEffectHandles;
 	
 	UFUNCTION(BlueprintCallable)
-	void HandleEquipItem(ACharacter* Character);
+	void Initialize(UItemInstance* ItemInstance, ACharacter* Character, TSubclassOf<UGameplayEffect> EquipmentGE);
+	
+	UFUNCTION(BlueprintCallable)
+	void HandleEquipItem(ACharacter* Character, TSubclassOf<UGameplayEffect> EquipmentGE);
 	
 	UFUNCTION(BlueprintCallable)
 	void HandleUnequipItem(ACharacter* Character);
